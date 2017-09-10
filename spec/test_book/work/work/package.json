@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "webpack": "$(yarn bin)/webpack"
+  },
+  "config": {
+    "webpack_args": " --config webpack.config.js --display-error-details"
+  }
+}
