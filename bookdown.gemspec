@@ -2,7 +2,7 @@
 require File.join([File.dirname(__FILE__),'lib','bookdown','version.rb'])
 
 spec = Gem::Specification.new do |s|
-  s.name = 'gli'
+  s.name = 'bookdown'
   s.version = Bookdown::VERSION
   s.licenses = ['Apache-2.0']
   s.author = 'David Copeland'
@@ -14,7 +14,7 @@ spec = Gem::Specification.new do |s|
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   =  'gli'
+  s.executables   =  'bookdown'
   s.require_paths = ["lib"]
 
   s.has_rdoc = true
@@ -22,6 +22,7 @@ spec = Gem::Specification.new do |s|
   s.rubyforge_project = 'bookdown'
   s.add_dependency('redcarpet')
   s.add_dependency('sass')
+  s.add_dependency('methadone')
   s.add_development_dependency('rdoc')
   s.add_development_dependency('rake')
   s.add_development_dependency('rspec')

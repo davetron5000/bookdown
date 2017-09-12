@@ -1,0 +1,386 @@
+$paper:           #fdfffd;
+$ink:             #100d10;
+$ink-light:       #665666;
+$background:      #efffef;
+$link-marker:     #100df4;
+$link-background: #f0f0f8;
+
+@import "highligh_js_colors.scss";
+
+$chars-per-line: 70;
+
+// Modular Font Scale
+$f1:  76.245px;
+$f2:  64.720px;
+$f3:  47.123px;
+$f4:  40.000px;
+$f5:  29.124px;
+$f6:  24.722px;
+$f7:  18.000px;
+$f8:  15.279px;
+$f9:  11.125px;
+$f10:  9.443px;
+$f11:  6.876px;
+$f12:  5.836px;
+$f13:  4.250px;
+
+
+$body-font-size: $f7;
+$line-height:    1.4;
+$text-width:     $body-font-size * $chars-per-line / 2;
+
+// Some sizes
+$sz1: $body-font-size * $line-height * 2; // 50.50px
+$sz2: $body-font-size * $line-height;     // 25.20px
+$sz3: $body-font-size * $line-height / 2; // 12.60px
+$sz4: $body-font-size * $line-height / 4; //  6.30px
+$sz5: $body-font-size * $line-height / 8; //  3.15px
+
+@mixin header-font {
+  font-family: sans-serif;
+  line-height: $line-height;
+  text-rendering: optimizeLegibility;
+}
+@mixin body-font {
+  font-size: $body-font-size;
+  font-family: serif;
+  font-weight: 200;
+  line-height: $line-height;
+  text-rendering: optimizeLegibility;
+}
+
+@mixin code-font {
+  font-family: monospace;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  background: $paper;
+  color: $ink;
+}
+pre {
+  background: $ink;
+  color: $paper;
+  border-radius: $sz4;
+}
+img {
+  background: white;
+  -webkit-box-shadow: $sz5/4 $sz5/4 $sz4 0px rgba(0,0,0,0.75);
+     -moz-box-shadow: $sz5/4 $sz5/4 $sz4 0px rgba(0,0,0,0.75);
+          box-shadow: $sz5/4 $sz5/4 $sz4 0px rgba(0,0,0,0.75);
+}
+
+body {
+  @include body-font;
+  padding: 0;
+  margin: 0;
+}
+
+body header {
+  margin-top: 0;
+  padding-top: $sz3;
+  text-align: center;
+  h1 {
+    @include header-font;
+    font-size: $f3;
+    line-height: 0.9;
+    padding-top: $sz3;
+    padding-bottom: $sz2;
+    margin-bottom: $sz2;
+    margin-top: 0;
+  }
+  h2 {
+    @include header-font;
+    font-size: $f6;
+    margin-top: -$sz1;
+    padding-top: 0;
+    margin-bottom: 0;
+    font-weight: 200;
+  }
+  h3 {
+    @include header-font;
+    font-size: $f8;
+    font-weight: normal;
+    margin-top: $sz3;
+    margin-bottom: 0;
+  }
+  h4 {
+    @include header-font;
+    font-size: $f8;
+    font-weight: 200;
+    font-style: italic;
+    margin-top: 0;
+    @media screen and (min-width: 30em) {
+      text-align: right;
+      margin-right: $sz1;
+      padding-bottom: $sz3;
+    }
+  }
+
+}
+
+.chapter aside.sidebar {
+  margin-left: -$sz2;
+  margin-right: -$sz2;
+  padding: $sz2;
+  padding-top: 0;
+  p {
+    font-family: avenir next,avenir,sans-serif;
+    font-weight: 500;
+    @media screen and (min-width: 30em) {
+      font-weight: 500;
+    }
+    text-align: justify;
+    text-indent: $sz2;
+  }
+  h1, h2, h3 {
+    font-family: serif;
+  }
+  h1 {
+    font-size: $f5;
+    text-align: left;
+    text-transform: none;
+    font-weight: 500;
+    margin-left: -$sz2;
+    margin-right: -$sz2;
+    padding-left: $sz2;
+    padding-right: $sz2;
+  }
+}
+.chapter aside.pullquote {
+  display: none;
+}
+@media screen and (min-width: 30em) {
+  .chapter aside.pullquote {
+    float: right;
+    width: 50%;
+    padding: $sz2;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: $f6;
+    line-height: 1.2;
+    display: block;
+  }
+}
+
+article {
+  &.chapter {
+    padding-left: $sz2;
+    padding-right: $sz2;
+    @media screen and (min-width: 30em) {
+      margin-left: auto;
+      margin-right: auto;
+      width: $text-width;
+    }
+  }
+}
+
+li {
+  @include body-font;
+}
+
+p {
+  @include body-font;
+}
+
+td {
+  @include body-font;
+}
+
+th {
+  @include body-font;
+}
+
+pre {
+  @include code-font;
+  font-size: $f8;
+  padding: $sz4;
+}
+
+code {
+  @include code-font;
+}
+blockquote {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: $sz2;
+  padding-right: $sz3;
+  p {
+    font-size: $f8;
+    line-height: 1.2;
+  }
+}
+
+
+.chapter {
+  h1 {
+    @include header-font;
+    margin-top: 0;
+    font-size: $f4;
+    font-weight: 100;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  h2 {
+    @include header-font;
+    margin-top: $sz1;
+    font-size: $f5;
+    font-weight: 400;
+    letter-spacing: -($sz5 / 2);
+  }
+  h3 {
+    @include header-font;
+    font-size: $f6;
+    font-weight: 100;
+  }
+  a.embiggen-image small {
+    @include header-font;
+    $font-size: $f9;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+body footer {
+  padding-top: $sz2;
+  padding-bottom: $sz2;
+  margin-top: $sz2;
+  nav {
+    @media screen and (min-width: 30em) {
+      margin-left: auto;
+      margin-right: auto;
+      width: $text-width;
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      a {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: $f7;
+      }
+      &.previous {
+        text-align: left;
+        padding-left: $sz2;
+        @media screen and (min-width: 30em) {
+          padding-left: 0;
+        }
+      }
+      &.next {
+        text-align: right;
+        padding-right: $sz2;
+        padding-bottom: $sz3;
+        @media screen and (min-width: 30em) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+aside.toc {
+  padding: $sz2;
+  [data-show='expanded'] {
+    display: none;
+  }
+  h1 {
+    font-size: $f8;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    a:hover {
+      background:none;
+    }
+    a small {
+      letter-spacing: 1px;
+      text-transform: lowercase;
+      display: inline;
+      font-size: $f8;
+      font-weight: 200;
+      text-decoration: underline;
+    }
+  }
+  div.toc {
+    @include header-font;
+    padding: $sz3;
+    margin: auto;
+    text-align: left;
+    width: 430px;
+  }
+  a, li {
+    @include header-font;
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: 400;
+  }
+  a {
+    text-decoration: none;
+    padding: 5px;
+    width: 100%;
+    display: block;
+  }
+  li {
+    font-size: $f8;
+    &.selected {
+      padding: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-weight: 200;
+    }
+  }
+}
+
+aside.ad {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    font-size:  $f6;
+    margin-bottom: 0;
+    &::after {
+      content: "";
+    }
+  }
+  h2 {
+    margin-top: 0;
+    font-size: $f7;
+  }
+  h3 a {
+    font-size: $f7;
+    text-transform: uppercase;
+    padding-left: $sz2;
+    padding-right: $sz2;
+    padding-top: $sz3;
+    padding-bottom: $sz3;
+    font-weight: bold;
+  }
+  a::after {
+    content: "";
+  }
+  .banner {
+    display: block;
+    font-style: italic;
+    padding-top: $sz3;
+    padding-bottom: $sz3;
+    margin-bottom: $sz3;
+    text-align: center;
+    width: 100%;
+  }
+  @media screen and (min-width: 30em) {
+    max-width: 50%;
+    float: left;
+    margin-right: $sz2;
+    margin-top: $sz3;
+    margin-bottom: $sz3;
+  }
+}

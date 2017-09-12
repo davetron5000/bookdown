@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= book.title %> - <%= chapter.title %></title>
+    <link href='styles.css' rel='stylesheet' type='text/css' media='all'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta charset="utf-8">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="js/toc.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1><%= book.title %></h1>
+      <% if show_full_header %>
+      <h2><%= book.subtitle %></h2>
+      <h3>by <%= book.author %></h3>
+      <% end %>
+      <aside class="toc">
+        <div class="toc">
+          <h1>
+            <a data-show-hide href="#">Contents
+              <span data-show="compressed" data-display="inline">&#9758</span>
+              <small data-show="expanded" data-display="inline">(hide)</small>
+            </a>
+          </h1>
+          <div data-show="expanded" data-display="block">
+            <ol>
+              <% toc.each do |other_chapter| %>
+                <% if chapter == other_chapter %>
+                  <li class="selected"><%= other_chapter.title %></li>
+                <% else %>
+                  <li><a href="<%= other_chapter.url %>"><%= other_chapter.title %></a></li>
+                <% end %>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+      </aside>
+      <% if show_full_header %>
+        <h4>Updated <%= Time.now.strftime("%b %d, %Y") %></h4>
+      <% end %>
+    </header>
+    <article class="chapter">
+      <h1><%= chapter.title %></h1>
+      <%= html %>
+    </article>
+    <footer>
+      <nav>
+        <ul>
+          <% if chapter.next_chapter %>
+            <li class="next">
+              <a href="<%= chapter.next_chapter.url %>"><%= chapter.next_chapter.title %> &rarr;</a>
+            </li>
+          <% end %>
+          <% if chapter.previous_chapter %>
+            <li class="previous">
+              <a href="<%= chapter.previous_chapter.url %>">&larr; <%= chapter.previous_chapter.title %></a>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+  <script type="text/javascript">
+    // Insert tracking crud here
+  </script>
+</html>

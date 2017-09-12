@@ -1,0 +1,28 @@
+require "pathname"
+require "bookdown/builder"
+
+desc "Clean out wip"
+task :clean do
+  FileUtils.rm_rf "work"
+  FileUtils.rm_rf "parsed_markdown"
+end
+
+desc "Build it all"
+task :default do
+  book = Bookdown::Book.new(
+                src_dir: ".",
+      static_images_dir: "images",
+           markdown_dir: "markdown",
+               work_dir: "work",
+    parsed_markdown_dir: "parsed_markdown",
+               site_dir: "site",
+                  title: "I made a thing",
+               subtitle: "It's all a good whatever",
+                 author: "Some person named #{ENV['LOGNAME'] || '??'}"
+  )
+
+  logger = Logger.new(STDOUT)
+  logger.level = ENV["DEBUG"] == "true" ? Logger::DEBUG : Logger::INFO
+  builder = Bookdown::Builder.new(logger: logger)
+  builder.build(book)
+end

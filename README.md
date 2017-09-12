@@ -9,6 +9,17 @@ Bookdown is an attempt to remedy that.
 You author your text in markdown that has been augmented with special pre-processor tags.  These tags can
 run commands, create & edit files, and even do limited stuff in the browser.
 
+## Make a book
+
+```
+> bookdown my-book
+«bunch of stuff happens»
+> cd my-book
+> bundle install
+> rake
+> open site/index.html
+```
+
 ## Example
 
 Suppose you want to teach someone about the `<h1>` tag. You might write this:
@@ -55,26 +66,3 @@ Bookdown converts the above markdown into standard markdown by processing the di
 `!`.  The result can then be rendered into HTML for viewing on a page.
 
 
-### Basic Rakefile
-
-Here is a Rakefile you can use to build your project
-
-```ruby
-require "pathname"
-require_relative "src/lib/bookdown/builder"
-
-desc "Build it all"
-task :default do
-  book = Bookdown::Book.new(
-                src_dir: "src",
-      static_images_dir: "images",
-           markdown_dir: "markdown",
-               work_dir: "work",
-    parsed_markdown_dir: "parsed_markdown",
-               site_dir: Pathname("../what-problem-does-it-solve.com/site").expand_path / "webpack"
-  )
-
-  builder = Bookdown::Builder.new
-  builder.build(book)
-end
-```
