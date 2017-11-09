@@ -29,6 +29,8 @@ module Bookdown
         Bookdown::Directives::CreateFile      => [ :line ],
         Bookdown::Directives::Graphviz        => [ :line, :screenshots_dir ],
         Bookdown::Directives::Ad              => [ :line ],
+        Bookdown::Directives::ShBG            => [ :line ],
+        Bookdown::Directives::StopBG          => [ :line ],
       }
     end
 
